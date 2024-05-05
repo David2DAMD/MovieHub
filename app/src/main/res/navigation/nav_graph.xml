@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/naph_graph"
+    app:startDestination="@id/home2">
+
+    <fragment
+        android:id="@+id/home2"
+        android:name="com.david.moviehub.views.Home"
+        android:label="Home" >
+        <action
+            android:id="@+id/action_home2_to_peliculaInfo"
+            app:destination="@id/peliculaInfo" />
+    </fragment>
+    <fragment
+        android:id="@+id/peliculaInfo"
+        android:name="com.david.moviehub.views.PeliculaInfo"
+        android:label="fragment_pelicula_info"
+        tools:layout="@layout/fragment_pelicula_info" >
+        <argument
+            android:name="nombre"
+            app:argType="string" />
+        <argument
+            android:name="descripcion"
+            app:argType="string" />
+        <argument
+            android:name="imagen"
+            app:argType="string" />
+    </fragment>
+</navigation>
