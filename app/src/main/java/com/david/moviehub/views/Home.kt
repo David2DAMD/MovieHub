@@ -51,17 +51,17 @@ class Home : Fragment() {
         //Se definen las acciones a realizar al pulsar cada uno de los botones
         //Se guarda el valor del botón pulsado en el ViewModel, se obtiene la lista correspondiente y se cambia el color del botón
 
-        binding.cvCartelera.setOnClickListener {
+        binding.btnCarteleraHome.setOnClickListener {
             viewModel.obtenerCartelera()
             cambiaColorBoton("car")
             viewModel.botonPulsado = "car"
         }
-        binding.cvPopulares.setOnClickListener {
+        binding.btnPopularesHome.setOnClickListener {
             viewModel.obtenerPopulares()
             cambiaColorBoton("pop")
             viewModel.botonPulsado = "pop"
         }
-        binding.cvFavoritos.setOnClickListener {
+        binding.btnFavoritosHome.setOnClickListener {
             viewModel.obtenerFavoritos()
             cambiaColorBoton("fav")
             viewModel.botonPulsado = "fav"
@@ -74,21 +74,21 @@ class Home : Fragment() {
     fun cambiaColorBoton(boton: String) {
         when (boton) {
             "car" -> {
-                binding.cvCartelera.setCardBackgroundColor(resources.getColor(R.color.verde_200))
-                binding.cvPopulares.setCardBackgroundColor(resources.getColor(R.color.azul_200))
-                binding.cvFavoritos.setCardBackgroundColor(resources.getColor(R.color.azul_200))
+                binding.btnCarteleraHome.setBackgroundColor(resources.getColor(R.color.fondoBotones))
+                binding.btnPopularesHome.setBackgroundColor(0)
+                binding.btnFavoritosHome.setBackgroundColor(0)
             }
 
             "pop" -> {
-                binding.cvCartelera.setCardBackgroundColor(resources.getColor(R.color.azul_200))
-                binding.cvPopulares.setCardBackgroundColor(resources.getColor(R.color.verde_200))
-                binding.cvFavoritos.setCardBackgroundColor(resources.getColor(R.color.azul_200))
+                binding.btnCarteleraHome.setBackgroundColor(0)
+                binding.btnPopularesHome.setBackgroundColor(resources.getColor(R.color.fondoBotones))
+                binding.btnFavoritosHome.setBackgroundColor(0)
             }
 
             "fav" -> {
-                binding.cvCartelera.setCardBackgroundColor(resources.getColor(R.color.azul_200))
-                binding.cvPopulares.setCardBackgroundColor(resources.getColor(R.color.azul_200))
-                binding.cvFavoritos.setCardBackgroundColor(resources.getColor(R.color.verde_200))
+                binding.btnCarteleraHome.setBackgroundColor(0)
+                binding.btnPopularesHome.setBackgroundColor(0)
+                binding.btnFavoritosHome.setBackgroundColor(resources.getColor(R.color.fondoBotones))
             }
         }
     }

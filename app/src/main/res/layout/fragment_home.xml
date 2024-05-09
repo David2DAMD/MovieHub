@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/turquesa"
+    android:background="@color/fondo"
     tools:context="views.Home">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -30,58 +30,36 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cvCartelera"
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/btnCarteleraHome"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            app:cardCornerRadius="8dp"
-            android:elevation="8dp"
-            app:cardBackgroundColor="@color/verde_200">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:text="Cartelera"
-                android:textColor="@color/white"/>
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cvPopulares"
-            android:layout_width="wrap_content"
+            android:layout_marginRight="25dp"
+            android:padding="15dp"
+            android:text="Cartelera"
+            android:textColor="@color/logo"
+            app:strokeColor="@color/logo" />
+        <Button
+            android:id="@+id/btnPopularesHome"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            app:cardCornerRadius="6dp"
-            android:elevation="8dp"
-            app:cardBackgroundColor="@color/azul_200">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:text="Populares"
-                android:textColor="@color/white"/>
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cvFavoritos"
-            android:layout_width="wrap_content"
+            android:padding="15dp"
+            android:text="Populares"
+            android:textColor="@color/logo"
+            app:strokeColor="@color/logo" />
+        <Button
+            android:id="@+id/btnFavoritosHome"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            app:cardCornerRadius="6dp"
-            android:elevation="8dp"
-            app:cardBackgroundColor="@color/azul_200">
+            android:layout_marginLeft="25dp"
+            android:padding="15dp"
+            android:text="Favoritos"
+            android:textColor="@color/logo"
+            app:strokeColor="@color/logo" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:text="Favoritos"
-                android:textColor="@color/white"/>
-
-        </androidx.cardview.widget.CardView>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

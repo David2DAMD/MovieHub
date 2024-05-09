@@ -25,7 +25,7 @@ class PeliculasAdapter(
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val cvPelicula = view.findViewById(R.id.cvPelicula) as CardView
         val ivPoster = view.findViewById(R.id.ivPoster) as ImageView
-        val ivFavorite = view.findViewById(R.id.ivFavorito) as ImageView
+        val ivFavorito = view.findViewById(R.id.ivFavorito) as ImageView
         val pcIndicator =
             view.findViewById(R.id.cpCircularProgress) as antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator
     }
@@ -61,23 +61,25 @@ class PeliculasAdapter(
         val isFavorito = favoritos.any { it.id == pelicula.id } ?: false
 
         if (isFavorito) {
-            holder.ivFavorite.setImageResource(R.drawable.ic_favorite)
+            holder.ivFavorito.setImageResource(R.drawable.ic_favorite)
         } else {
-            holder.ivFavorite.setImageResource(R.drawable.ic_favorite_border)
+            holder.ivFavorito.setImageResource(R.drawable.ic_favorite_border)
         }
 
         //Se define la acción a realizar al pulsar el ImageView ivFavorito según esté dentro de la lista de favoritos o no
-        holder.ivFavorite.setOnClickListener {
-            if (isFavorito) {
-                holder.ivFavorite.setImageResource(R.drawable.ic_favorite_border)
+        holder.ivFavorito.setOnClickListener {
+            if (favoritos.any { it.id == pelicula.id } ?: false) {
+                holder.ivFavorito.setImageResource(R.drawable.ic_favorite_border)
                 viewModel.eliminarPelicula(pelicula.id)
                 viewModel.rellenarFavoritos()
 
             } else {
-                holder.ivFavorite.setImageResource(R.drawable.ic_favorite)
+                holder.ivFavorito.setImageResource(R.drawable.ic_favorite)
                 viewModel.insertarPelicula(pelicula)
                 viewModel.rellenarFavoritos()
+
             }
+            notifyDataSetChanged()
         }
 
         //Se define la acción a realizar al pulsar el CardView cvPelicula mediante Navgraph
