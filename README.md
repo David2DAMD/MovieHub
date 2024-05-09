@@ -10,3 +10,8 @@ Consta de tres fragments:
   3. PeliculaInfo que incluye información de la película seleccionada. Consta de la imagen del poster de la película, el título y una breve descripción.
 
 La aplicación fué diseñada utilizando la arquitectura MVVM.
+
+NOTAS:
+  - El elemento CircularProgressIndicator lo encontré en un ejemplo que vi en internet y me gustó. La fuente de este elemento es https://github.com/antonKozyriatskyi/CircularProgressIndicator.
+  - El diseño de la aplicación no está como me gustaría. Empecé a programar con una idea y según fui avanzando fui adaptando el codigo a nuevas ideas que iban surgiendo, por lo que no quedó todo lo organizada ni "profesional" que me hubiera gustado.
+    Por ejemplo, en el fragment principal, utilizo el mismo fragment y el mismo RecyclerView para visualizar los tres tipos de listas de películas, lo que inicialmente me pareció buena idea para simplificar código pero al final me complicó un poco las cosas en algún aspecto.
