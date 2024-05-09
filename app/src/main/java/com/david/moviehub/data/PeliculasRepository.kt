@@ -40,24 +40,24 @@ Asegura que la actualización se realice en el hilo principal
 
     //Método para rellenar la lista de películas con las películas favoritas de Room
     suspend fun obtenerFavoritos(){
-        val peliculasFav = dao.getAll()
+        val peliculasFav = dao.obtenerPeliculas()
         _listaPeliculas.postValue(peliculasFav)
     }
 
     //Metodo para rellenar la lista de películas favoritas con las películas favoritas de Room
     suspend fun rellenarFavoritos(){
-        val peliculasFav = dao.getAll()
+        val peliculasFav = dao.obtenerPeliculas()
         _listaFavoritos.postValue(peliculasFav)
     }
 
     //Metodo para insertar película en la base de datos Room
-    suspend fun insertPelicula(pelicula: Pelicula){
-        dao.insertPelicula(pelicula)
+    suspend fun insertarPelicula(pelicula: Pelicula){
+        dao.insertarPelicula(pelicula)
     }
 
     //Método para eliminar una película de la base de datos Room
-    suspend fun deletePelicula(id: String){
-        dao.deletePelicula(id)
+    suspend fun eliminarPelicula(id: String){
+        dao.eliminarPelicula(id)
     }
 
 }

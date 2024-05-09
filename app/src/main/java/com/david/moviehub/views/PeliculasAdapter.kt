@@ -13,8 +13,6 @@ import com.bumptech.glide.request.RequestOptions
 import com.david.moviehub.R
 import com.david.moviehub.core.Pelicula
 import com.david.moviehub.viewmodel.PeliculasViewModel
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 class PeliculasAdapter(
     val context: Context,
@@ -27,9 +25,9 @@ class PeliculasAdapter(
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val cvPelicula = view.findViewById(R.id.cvPelicula) as CardView
         val ivPoster = view.findViewById(R.id.ivPoster) as ImageView
-        val ivFavorite = view.findViewById(R.id.iv_favorite) as ImageView
+        val ivFavorite = view.findViewById(R.id.ivFavorito) as ImageView
         val pcIndicator =
-            view.findViewById(R.id.circularProgress) as antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator
+            view.findViewById(R.id.cpCircularProgress) as antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -47,15 +45,18 @@ class PeliculasAdapter(
         val urlImagen = "https://image.tmdb.org/t/p/w500"
         val lstFavoritos = viewModel.lstFavoritos.value
 
+        //Se utiliza Glide para mostrar en el ImageView la imagen de la URL
         Glide
             .with(context)
             .load("${urlImagen}${pelicula.poster}")
             .apply(RequestOptions().override(330, 330))
             .into(holder.ivPoster)
 
+        //Se configura el Circular Progress Indicator
         holder.pcIndicator.maxProgress = 10.0
         holder.pcIndicator.setCurrentProgress(pelicula.mediaVotos.toDouble())
 
+        //Se comprueba si la película está en la lista de favoritos para asignarle la imagen que corresponda
         val favoritos = lstFavoritos ?: emptyList()
         val isFavorito = favoritos.any { it.id == pelicula.id } ?: false
 
@@ -65,26 +66,28 @@ class PeliculasAdapter(
             holder.ivFavorite.setImageResource(R.drawable.ic_favorite_border)
         }
 
+        //Se define la acción a realizar al pulsar el ImageView ivFavorito según esté dentro de la lista de favoritos o no
         holder.ivFavorite.setOnClickListener {
             if (isFavorito) {
                 holder.ivFavorite.setImageResource(R.drawable.ic_favorite_border)
-                viewModel.deletePelicula(pelicula.id)
+                viewModel.eliminarPelicula(pelicula.id)
                 viewModel.rellenarFavoritos()
+
             } else {
                 holder.ivFavorite.setImageResource(R.drawable.ic_favorite)
-                viewModel.insertPelicula(pelicula)
+                viewModel.insertarPelicula(pelicula)
                 viewModel.rellenarFavoritos()
             }
         }
 
+        //Se define la acción a realizar al pulsar el CardView cvPelicula mediante Navgraph
         holder.cvPelicula.setOnClickListener {
             val action = HomeDirections.actionHome2ToPeliculaInfo(
                 pelicula.nombrePelicula,
                 pelicula.descripcion,
-                pelicula.poster
+                pelicula.poster,
             )
             navGraph.navigate(action)
-
         }
     }
 }

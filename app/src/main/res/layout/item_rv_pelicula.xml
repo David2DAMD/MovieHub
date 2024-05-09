@@ -24,7 +24,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/iv_favorite"
+                android:id="@+id/ivFavorito"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
@@ -45,7 +45,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
             <antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator
-                android:id="@+id/circularProgress"
+                android:id="@+id/cpCircularProgress"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"

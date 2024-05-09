@@ -17,52 +17,62 @@ de la base de datos Room y de los datos obtenidos mediante Retrofit
 Es un intermediario entre la capa de presentación y la capa de datos
  */
 
-class PeliculasViewModel(val peliculasRepository: PeliculasRepository) : ViewModel() {
+class PeliculasViewModel(val peliculasRepositorio: PeliculasRepository) : ViewModel() {
 
-    val lstPeliculas: LiveData<List<Pelicula>> = peliculasRepository.listaPeliculas
-    val lstFavoritos: LiveData<List<Pelicula>> = peliculasRepository.listaFavoritos
+    val lstPeliculas: LiveData<List<Pelicula>> = peliculasRepositorio.listaPeliculas
+    val lstFavoritos: LiveData<List<Pelicula>> = peliculasRepositorio.listaFavoritos
+
+    //Variable que almacena el botón pulsado para compartirlo en todos los fragments
+    var botonPulsado: String = ""
 
     init{
-        obtenerCartelera()
+        //Rellenar la lista de peliculas favoritas de Room al inicializar el ViewModel
         rellenarFavoritos()
     }
 
+    //Obtener peliculas de cartelera vía Retrofit y añadirlas a la lista
     fun obtenerCartelera(){
         viewModelScope.launch(Dispatchers.IO) {
-            peliculasRepository.obtenerCartelera()
+            peliculasRepositorio.obtenerCartelera()
         }
     }
 
+    //Obtener peliculas favoritas vía Retrofit y añadirlas a la lista
     fun obtenerPopulares(){
         viewModelScope.launch(Dispatchers.IO) {
-            peliculasRepository.obtenerPopulares()
+            peliculasRepositorio.obtenerPopulares()
         }
     }
 
+    //Obtener peliculas favoritas almacenadas en Room y añadirlas a la lista
     fun obtenerFavoritos() {
         viewModelScope.launch(Dispatchers.IO) {
-            peliculasRepository.obtenerFavoritos()
+            peliculasRepositorio.obtenerFavoritos()
         }
     }
 
+    //Obtener peliculas favoritas almacenadas en Room y añadirlas a la lista de peliculas favoritas
     fun rellenarFavoritos() {
         viewModelScope.launch(Dispatchers.IO) {
-            peliculasRepository.rellenarFavoritos()
+            peliculasRepositorio.rellenarFavoritos()
         }
     }
 
 
-    fun insertPelicula(pelicula: Pelicula){
+    //Insertar película en base de datos Room
+    fun insertarPelicula(pelicula: Pelicula){
         viewModelScope.launch(Dispatchers.IO) {
-            peliculasRepository.insertPelicula(pelicula)
+            peliculasRepositorio.insertarPelicula(pelicula)
         }
     }
 
-    fun deletePelicula(id: String){
+    //Eliminar película de base de datos Room
+    fun eliminarPelicula(id: String){
         viewModelScope.launch(Dispatchers.IO) {
-            peliculasRepository.deletePelicula(id)
+            peliculasRepositorio.eliminarPelicula(id)
         }
     }
+
 }
 
 /*

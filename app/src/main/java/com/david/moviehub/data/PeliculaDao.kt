@@ -12,12 +12,12 @@ import com.david.moviehub.core.Pelicula
 interface PeliculaDao {
 
     @Query("SELECT * FROM Pelicula ORDER BY nombrePelicula ASC")
-    fun getAll(): List<Pelicula>
+    fun obtenerPeliculas(): List<Pelicula>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertPelicula(model: Pelicula)
+    fun insertarPelicula(model: Pelicula)
 
     @Query("DELETE FROM Pelicula WHERE id = :id")
-    fun deletePelicula(id: String)
+    fun eliminarPelicula(id: String)
 
 }

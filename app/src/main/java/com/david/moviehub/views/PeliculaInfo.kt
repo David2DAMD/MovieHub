@@ -6,11 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
+import androidx.navigation.NavController
+import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.david.moviehub.R
 import com.david.moviehub.databinding.FragmentPeliculaInfoBinding
+import com.david.moviehub.viewmodel.PeliculasViewModel
+import com.david.moviehub.viewmodel.PeliculasViewModelFactory
 import java.net.URL
 
 class PeliculaInfo : Fragment() {
@@ -24,21 +31,26 @@ class PeliculaInfo : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentPeliculaInfoBinding.inflate(inflater,container,false)
+        _binding = FragmentPeliculaInfoBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.fpTitle.text = args.nombre
-        binding.fpDescription.text = args.descripcion
+
+        //Se recuperan los datos pasados mediante el Navigation Component y se asignan a los elementos de la vista de este Fragment
+        binding.tvTitulo.text = args.nombre
+        binding.tvDescripcion.text = args.descripcion
+
+        //Se usa Glide para visualizar las imagenes de la URL en un ImageView
         val urlImagen = "https://image.tmdb.org/t/p/w500${args.imagen}"
         Glide.with(requireContext())
             .load(urlImagen)
-            .into(binding.fpImage)
+            .into(binding.ivPosterInfo)
 
-        binding.fpVolver.setOnClickListener {
-            it.findNavController().popBackStack()
+
+        binding.btnVolver.setOnClickListener {
+            findNavController().popBackStack()
         }
     }
 

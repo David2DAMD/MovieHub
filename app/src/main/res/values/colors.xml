@@ -8,5 +8,7 @@
     <color name="rojo_200">#F44336</color>
     <color name="blanco_200">#CCFFFFFF</color>
     <color name="azul_200">#3F51B5</color>
+    <color name="turquesa">#48D3CA</color>
+    <color name="logo">#265557</color>
 
 </resources>

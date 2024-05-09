@@ -3,12 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/turquesa"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".views.PeliculaInfo">
 
     <ImageView
-        android:id="@+id/fp_image"
+        android:id="@+id/ivPosterInfo"
         android:layout_width="0dp"
         android:layout_height="500dp"
         android:scaleType="centerCrop"
@@ -17,7 +18,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/fp_title"
+        android:id="@+id/tvTitulo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -28,10 +29,10 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fp_image" />
+        app:layout_constraintTop_toBottomOf="@id/ivPosterInfo" />
 
     <TextView
-        android:id="@+id/fp_description"
+        android:id="@+id/tvDescripcion"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -42,15 +43,17 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fp_title" />
+        app:layout_constraintTop_toBottomOf="@id/tvTitulo" />
     <Button
-        android:id="@+id/fp_volver"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnVolver"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:layout_marginBottom="20dp"
+        android:layout_margin="50dp"
+        android:padding="15dp"
         android:text="Volver"
-        android:textColor="@color/white"
+        android:textColor="@color/logo"
+        app:strokeColor="@color/logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
