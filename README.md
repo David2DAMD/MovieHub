@@ -15,3 +15,4 @@ NOTAS:
   - El elemento CircularProgressIndicator lo encontré en un ejemplo que vi en internet y me gustó. La fuente de este elemento es https://github.com/antonKozyriatskyi/CircularProgressIndicator.
   - El diseño de la aplicación no está como me gustaría. Empecé a programar con una idea y según fui avanzando fui adaptando el codigo a nuevas ideas que iban surgiendo, por lo que no quedó todo lo organizada ni "profesional" que me hubiera gustado.
     Por ejemplo, en el fragment principal, utilizo el mismo fragment y el mismo RecyclerView para visualizar los tres tipos de listas de películas, lo que inicialmente me pareció buena idea para simplificar código pero al final me complicó un poco las cosas en algún aspecto.
+ - No se valoró la opción de utilizar la aplicación en formato horizontal, está diseñada para utilizar sólo en vertical.
