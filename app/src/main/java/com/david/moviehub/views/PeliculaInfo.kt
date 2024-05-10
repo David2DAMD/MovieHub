@@ -41,6 +41,13 @@ class PeliculaInfo : Fragment() {
         //Se recuperan los datos pasados mediante el Navigation Component y se asignan a los elementos de la vista de este Fragment
         binding.tvTitulo.text = args.nombre
         binding.tvDescripcion.text = args.descripcion
+        val votos = args.votos
+        binding.tvFechaLanzamiento.text = args.fecha
+        binding.tvVotosTotales.text = args.votos
+
+        //Se configura el Circular Progress Indicator
+        binding.cpCircularProgressInfo.maxProgress = 10.0
+        binding.cpCircularProgressInfo.setCurrentProgress(votos.toDouble())
 
         //Se usa Glide para visualizar las imagenes de la URL en un ImageView
         val urlImagen = "https://image.tmdb.org/t/p/w500${args.imagen}"

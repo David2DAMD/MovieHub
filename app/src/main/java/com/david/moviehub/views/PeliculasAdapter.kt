@@ -88,6 +88,9 @@ class PeliculasAdapter(
                 pelicula.nombrePelicula,
                 pelicula.descripcion,
                 pelicula.poster,
+                pelicula.mediaVotos,
+                pelicula.fechaLanzamiento,
+                pelicula.totalVotos
             )
             navGraph.navigate(action)
         }

@@ -27,6 +27,15 @@
         <argument
             android:name="imagen"
             app:argType="string" />
+        <argument
+            android:name="votos"
+            app:argType="string" />
+        <argument
+            android:name="fecha"
+            app:argType="string" />
+        <argument
+            android:name="totalVotos"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/portada"
